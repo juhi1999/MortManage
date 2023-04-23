@@ -21,7 +21,7 @@ public class CustomerRestController {
 
     @GetMapping("/customers")
     public List<Customer> AllCustomers(){
-        return customerService.FindAll();
+        return customerService.findAll();
     }
 
     @GetMapping("/customers/{customerId}")
