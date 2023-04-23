@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CustomerDAO {
 
-    List<Customer> AllCustomers();
+    List<Customer> FindAll();
 
     Customer findById(int theId);
 

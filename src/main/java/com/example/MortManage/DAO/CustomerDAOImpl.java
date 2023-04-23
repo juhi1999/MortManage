@@ -40,7 +40,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> AllCustomers() {
+    public List<Customer> FindAll() {
         //create a query
         TypedQuery<Customer> theQuery= entityManager.createQuery("from Customer",Customer.class);
 

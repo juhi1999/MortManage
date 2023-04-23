@@ -1,6 +1,5 @@
 package com.example.MortManage.rest;
 
-import com.example.MortManage.DAO.CustomerDAO;
 import com.example.MortManage.entity.Customer;
 import com.example.MortManage.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class CustomerRestController {
 
     @GetMapping("/customers")
     public List<Customer> AllCustomers(){
-        return customerService.AllCustomers();
+        return customerService.FindAll();
     }
 
     @GetMapping("/customers/{customerId}")
@@ -47,6 +46,28 @@ public class CustomerRestController {
         theCustomer.setId(0);
         Customer dbCustomer = customerService.save(theCustomer);
         return dbCustomer;
+    }
+
+    //add mapping for PUT customer - update existing customers
+    @PutMapping("/customers")
+    public Customer updateCustomer(@RequestBody Customer theCustomer){
+        Customer dbCustomer = customerService.save(theCustomer);
+        return dbCustomer;
+    }
+
+    //add mapping dor Delete /employee/{employeeId} - delete employee
+
+    @DeleteMapping("/customers/{customerId}")
+    public String deleteCustomer(@PathVariable int customerId )
+    {
+        Customer tempCustomer= customerService.findById(customerId);
+
+        if(tempCustomer==null){
+            throw new RuntimeException("Customer not found - "+ customerId);
+        }
+        customerService.deleteById(customerId);
+
+        return "Deleted customer id - "+ customerId;
     }
 
 

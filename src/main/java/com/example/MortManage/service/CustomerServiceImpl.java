@@ -19,8 +19,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Customer> AllCustomers() {
-        return customerDAO.AllCustomers();
+    public List<Customer> FindAll() {
+        return customerDAO.FindAll();
     }
 
     @Override
